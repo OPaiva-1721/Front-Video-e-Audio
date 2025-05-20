@@ -1,0 +1,9 @@
+/* Arquivo netlify.toml para configuração do deploy */
+[build]
+  publish = "/"
+  command = ""
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
