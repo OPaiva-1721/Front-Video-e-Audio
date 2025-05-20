@@ -1,7 +1,7 @@
-/* Arquivo netlify.toml para configuração do deploy */
+# Arquivo netlify.toml para configuração do deploy
 [build]
   publish = "/"
-  command = ""
+  command = "echo 'No build command required'"
 
 [[redirects]]
   from = "/*"
