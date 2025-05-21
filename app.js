@@ -47,27 +47,20 @@ async function handleDownloadSubmit(e) {
     const url = document.getElementById('url').value;
     const format = document.getElementById('format').value;
     const quality = document.getElementById('quality').value;
-    const savePath = `output.${format}`; // Nome fixo, como no backend
+    const savePath = `output.${format}`;
     
-    // Validar URL
     if (!url || !/youtube\.com\/watch\?v=[\w-]+/.test(url)) {
         showError('Por favor, insira uma URL válida do YouTube (ex.: https://youtube.com/watch?v=abc123).');
         return;
     }
     
-    // Mostrar mensagem de processamento
     showSuccess('Processando seu download...');
     
     try {
         const response = await fetch('https://video-e-audio.onrender.com/api/download', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-                url: url,
-                format: format,
-                quality: quality,
-                savePath: savePath
-            })
+            body: JSON.stringify({ url, format, quality, savePath })
         });
         
         if (!response.ok) {
@@ -82,15 +75,18 @@ async function handleDownloadSubmit(e) {
         // Adicionar ao histórico
         addToDownloadHistory(url, format, quality, data.id);
         
-        // Recarregar a lista de downloads
+        // Recarregar a lista
         if (window.location.pathname.includes('downloads.html')) {
             loadDownloads();
         }
+        
+        // Delay aleatório pra evitar 429
+        const delay = Math.floor(Math.random() * 5000) + 1000; // 1-6 segundos
+        await new Promise(resolve => setTimeout(resolve, delay));
     } catch (error) {
         showError('Erro ao processar o download: ' + error.message);
     }
     
-    // Limpar formulário
     document.getElementById('downloadForm').reset();
     toggleQualityField();
 }
