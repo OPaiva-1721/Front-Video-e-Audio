@@ -60,11 +60,22 @@ document.addEventListener('DOMContentLoaded', function() {
     showSuccess('Processando seu download...');
     
     try {
-      const response = await fetch('https://video-e-audio.onrender.com', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ url, format, quality, savePath })
-      });
+      const response = await fetch('https://video-e-audio.onrender.com/api/download', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+        url: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
+        format: 'mp4',
+        quality: '720p',
+        savePath: 'output.mp4'
+    })
+})
+.then(response => response.json())
+.then(data => {
+    console.log(data.message, data.id);
+    // Atualiza a UI com o ID do download
+})
+.catch(error => console.error('Erro:', error));
       
       if (!response.ok) {
         const error = await response.text();
