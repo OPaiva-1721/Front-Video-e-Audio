@@ -60,7 +60,7 @@ document.addEventListener('DOMContentLoaded', function() {
     showSuccess('Processando seu download...');
     
     try {
-      const response = await fetch('https://seu-backend.onrender.com/download', {
+      const response = await fetch('https://video-e-audio.onrender.com', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ url, format, quality, savePath })
