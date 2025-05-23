@@ -134,5 +134,3 @@ const ActiveDownloads: React.FC = () => {
     </ActiveDownloadsContainer>
   );
 };
-
-export default ActiveDownloads;
