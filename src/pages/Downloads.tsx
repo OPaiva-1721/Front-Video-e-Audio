@@ -20,17 +20,17 @@ import RefreshIcon from '@mui/icons-material/Refresh';
 import { styled } from '@mui/material/styles';
 import { getDownloads } from '../services/api';
 
-const StyledTableContainer = styled(TableContainer)(({ theme }) => ({
-  borderRadius: theme.shape.borderRadius,
+const styledTableContainerStyles = {
+  borderRadius: (theme) => theme.shape.borderRadius,
   boxShadow: '0 4px 20px rgba(0, 0, 0, 0.15)',
   '& .MuiTableCell-head': {
-    backgroundColor: theme.palette.background.paper,
+    backgroundColor: (theme) => theme.palette.background.paper,
     fontWeight: 'bold',
   },
   '& .MuiTableRow-root:hover': {
     backgroundColor: 'rgba(255, 255, 255, 0.05)',
   }
-}));
+};
 
 const FormatChip = styled(Chip)<{ format: string }>(({ theme, format }) => {
   const colorMap: Record<string, string> = {
@@ -124,7 +124,7 @@ const Downloads: React.FC = () => {
           </Typography>
         </Paper>
       ) : (
-        <StyledTableContainer component={Paper}>
+        <TableContainer component={Paper} sx={styledTableContainerStyles}>
           <Table>
             <TableHead>
               <TableRow>
