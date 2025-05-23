@@ -1,9 +1,0 @@
-# Arquivo netlify.toml para configuração do deploy
-[build]
-  publish = "/"
-  command = "echo 'No build command required'"
-
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
