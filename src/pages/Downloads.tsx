@@ -175,7 +175,7 @@ const Downloads: React.FC = () => {
               ))}
             </TableBody>
           </Table>
-        </StyledTableContainer>
+        </TableContainer>
       )}
     </Box>
   );
