@@ -19,12 +19,13 @@ import DownloadIcon from '@mui/icons-material/Download';
 import RefreshIcon from '@mui/icons-material/Refresh';
 import { styled } from '@mui/material/styles';
 import { getDownloads } from '../services/api';
+import { Theme } from '@mui/material/styles';
 
 const styledTableContainerStyles = {
-  borderRadius: (theme) => theme.shape.borderRadius,
+  borderRadius: (theme: Theme) => theme.shape.borderRadius,
   boxShadow: '0 4px 20px rgba(0, 0, 0, 0.15)',
   '& .MuiTableCell-head': {
-    backgroundColor: (theme) => theme.palette.background.paper,
+    backgroundColor: (theme: Theme) => theme.palette.background.paper,
     fontWeight: 'bold',
   },
   '& .MuiTableRow-root:hover': {
